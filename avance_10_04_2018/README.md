@@ -20,7 +20,9 @@ En este sentido, continua el trabajo de investigación ya más enfocado a la imp
 
 
 - Federico Riveroll
-Leí la siguiente referencia, para determinar como se podría impementar el algoritmo utilizando caminatas aleatorias.... 
+Leí la siguiente [referencia](http://ta.twi.tudelft.nl/mf/users/oosterle/oosterlee/lec8-hit-2009.pdf), para determinar como se podría impementar el algoritmo utilizando caminatas aleatorias, en específico la integración vía MCMC. Considero que esta opción es particularmente interesante por que la paralelización hace mucho sentido. Se pueden realizar diversas caminatas aleatorias en paralelo ya que no depende una de otra y al final juntar todos los puntos y poder ver la distribución.
+
+Es interesante particularmente por que las diversas caminatas no dependen la una de la otra y de esta forma la paralelización hace mucho sentido.
 
 
 - Pablo Soria
