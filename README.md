@@ -9,7 +9,7 @@ Cálculo del AUC
 # Obetivo
 Implementación de un algoritmo para el cálculo del área bajo la curva (AUC) de forma paralela.
 
-En la carpeta [avance_10_04_2018](10_04_2018/README.md) se encuentra el primer avance de nuestro proyecto
+En la carpeta [avance_10_04_2018](avance_10_04_2018/README.md) se encuentra el primer avance de nuestro proyecto
 
 # Referencias
 - [http://heather.cs.ucdavis.edu/~matloff/158/PLN/ParProcBook.pdf](http://heather.cs.ucdavis.edu/~matloff/158/PLN/ParProcBook.pdf)
