@@ -34,7 +34,7 @@ Para estructurar los avances decidimos generar el siguiente cronograma para las 
 
 - 10-04-2018: Entrega primer avance.
 
-- 11-04-2018: Revisión del docker file que servirá para desarrollar el proyecto, en caso de que no se pueda generar de forma satisfactora, levantar las instancias en AWS para no iniciar la implementación cuanto antes.
+- 11-04-2018: Revisión del docker file que servirá para desarrollar el proyecto, en caso de que no se pueda generar de forma satisfactora, levantar las instancias en AWS para iniciar la implementación cuanto antes.
 
 - 12-04-2018: Revisión de investigación implementaciones.
 
