@@ -1,7 +1,7 @@
-# Título del proyecto:
+# Título del proyecto
 Cálculo del AUC
 
-# Integrantes:
+# Integrantes
 - Alejandro Hernández 87806
 - Federico Riveroll 105898
 - Pablo Soria 111969
