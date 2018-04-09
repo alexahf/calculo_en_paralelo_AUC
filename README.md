@@ -4,7 +4,7 @@ Cálculo del AUC
 # Integrantes:
 - Alejandro Hernández 87806
 - Federico Riveroll 105898
-- Pablo Soria 
+- Pablo Soria 111969
 
 # Obetivo
 Implementación de un algoritmo para el cálculo del área bajo la curva (AUC) de forma paralela.
