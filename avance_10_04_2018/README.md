@@ -15,18 +15,24 @@ Consideramos tres posibles alternativas para la implementación del cálculo del
 Cada uno de los integrantes procedió a investigar sobre cada una de las alternativas planteadas y su factibilidad de implementación, así como comenzar a analizar de qué forma podría desarrollarse la implementación y cuál camino se seguiría.
 
 - Alejandro Hernández
+
 Busque algunos ejemplos de paralelización en la siguiente [referencia](http://heather.cs.ucdavis.edu/~matloff/158/PLN/ParProcBook.pdf), para intentar comprender como se realizariá la paralelización en el caso puntual del calculo de AUC y leí las secciones relativas a Open MPI y a CUDA, para ver en qué framework desarrollaremos el proyecto. Asimismo, analicé el siguiente trabajo  [referencia](https://www.manasquanschools.org/cms/lib6/NJ01000635/Centricity/Domain/117/2%20Area%20Under%20Curve%20Riemann%20and%20Trap%20Rule.pdf) y llegue a la conclusión de que es posible su implementación; no obstante, aun estoy investigando más pues no me queda tan claro como sería la distribución de los threads. Inicialmente, considero que se podría paralelizar del área de cada rectángulo por thread, pero falta analizar si el numero de recatangulos y por ende el numero de particiones se asignaría de forma manual, o es posible incorporar al algoritmo algún método para la elección de la partición adecuada. 
 En este sentido, continua el trabajo de investigación ya más enfocado a la implementación.
 
 
 - Federico Riveroll
+
 Leí la siguiente [referencia](http://ta.twi.tudelft.nl/mf/users/oosterle/oosterlee/lec8-hit-2009.pdf), para determinar como se podría impementar el algoritmo utilizando caminatas aleatorias, en específico la integración vía MCMC. Considero que esta opción es particularmente interesante por que la paralelización hace mucho sentido. Se pueden realizar diversas caminatas aleatorias en paralelo ya que no depende una de otra y al final juntar todos los puntos y poder ver la distribución.
 
 Es interesante particularmente por que las diversas caminatas no dependen la una de la otra y de esta forma la paralelización hace mucho sentido.
 
 
 - Pablo Soria
-Leí el siguiente trabajo  que detalla el método de Simpson, el cual a primera vista se aprecia de fácil implementación pues consiste en aproximar el área bajo la curva utilizando un polinomio cuadrático....
+
+Como parte de la investigación sobre el método de Simpson: En términos de integración numérica, una forma de aproximar una integral definida en un intervalo [a,b] podemos subdividir el intervalo y aproximar f  por medio de un polinomio de primer grado. El método utilizado por la regla de Simpson sigue la misma filosofía de aproximación pero lo hace aproximando f en el sub-intervalo por medio de un polinomio de 2° grado.
+La implementación de forma paralela más sencilla es del estilo SIMD Single instruction multiple data que implica particionar el intervalo [a,b] en función de la cantidad de cores, realizar el cálculo de forma separada para cada core y finalmente sumar todas las partes dentro de uno mismo. Actualmente me encuentro consiguiendo el siguiente artículo científico.
+Se ha localizado un artículo que parece implementar esta situación en CUDA actualmente me encuentro consiguiendo el artículo por medio de las bases de datos del ITAM, I. W. A. Swardiana, T. Wirahman and R. Sadikin, "An Efficient Parallel Algorithm for Simpson Cumulative Integration on GPU," 2015 Third International Symposium on Computing and Networking (CANDAR), Sapporo, 2015, pp. 346-349.
+
 
 
 # Equipo
