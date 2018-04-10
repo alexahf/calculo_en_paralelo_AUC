@@ -14,13 +14,13 @@ En la carpeta [avance_10_04_2018](avance_10_04_2018/README.md) se encuentra el p
 # Referencias
 - [http://heather.cs.ucdavis.edu/~matloff/158/PLN/ParProcBook.pdf](http://heather.cs.ucdavis.edu/~matloff/158/PLN/ParProcBook.pdf)
 
-- [https://www.cs.waikato.ac.nz/~remco/roc.pdf](https://www.cs.waikato.ac.nz/~remco/roc.pdf)
+- [https://http://www.ece.utah.edu/~ece6340/LECTURES/Jan30/Numerical%20Integration.pdf](https://http://www.ece.utah.edu/~ece6340/LECTURES/Jan30/Numerical%20Integration.pdf)
 
-- [http://www.alexejgossmann.com/auc/](http://www.alexejgossmann.com/auc/)
+- [http://www.shodor.org/media/content//petascale/materials/UPModules/AreaUnderCurve/AUC_Module_Document_pdf.pdf](http://www.shodor.org/media/content//petascale/materials/UPModules/AreaUnderCurve/AUC_Module_Document_pdf.pdf)
 
-- [http://blog.revolutionanalytics.com/2016/11/calculating-auc.html](http://blog.revolutionanalytics.com/2016/11/calculating-auc.html)
+- [https://math.berkeley.edu/~scanlon/m16bs04/ln/16b2lec15.pdf](https://math.berkeley.edu/~scanlon/m16bs04/ln/16b2lec15.pdf)
 
-- [https://www.manasquanschools.org/cms/lib6/NJ01000635/Centricity/Domain/117/2%20Area%20Under%20Curve%20Riemann%20and%20Trap%20Rule.pdf](https://www.manasquanschools.org/cms/lib6/NJ01000635/Centricity/Domain/117/2%20Area%20Under%20Curve%20Riemann%20and%20Trap%20Rule.pdf)
+- [http://www.math.harvard.edu/~knill/teaching/math1a_2012/handouts/40-numerical.pdf](http://www.math.harvard.edu/~knill/teaching/math1a_2012/handouts/40-numerical.pdf)
 
 - [http://ta.twi.tudelft.nl/mf/users/oosterle/oosterlee/lec8-hit-2009.pdf](http://ta.twi.tudelft.nl/mf/users/oosterle/oosterlee/lec8-hit-2009.pdf)
 
