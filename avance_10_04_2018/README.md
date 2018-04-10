@@ -8,21 +8,22 @@
 # Individual
 
 Consideramos tres posibles alternativas para la implementación del cálculo del AUC:
-- Utilizando sumas de Riemman.
-- Urilizando el método de Simpson basado en trapecios curvilíneos.
-- Utilizando caminatas aleatorias.
+- Utilizando sumas de Riemman, regla del punto medio o del trapezio.
+- Urilizando el método de Simpson.
+- Utilizando MCMC.
 
 Cada uno de los integrantes procedió a investigar sobre cada una de las alternativas planteadas y su factibilidad de implementación, así como comenzar a analizar de qué forma podría desarrollarse la implementación y cuál camino se seguiría.
 
 - Alejandro Hernández
 
-Busque algunos ejemplos de paralelización en la siguiente [referencia](http://heather.cs.ucdavis.edu/~matloff/158/PLN/ParProcBook.pdf), para intentar comprender como se realizariá la paralelización en el caso puntual del calculo de AUC y leí las secciones relativas a Open MPI y a CUDA, para ver en qué framework desarrollaremos el proyecto. Asimismo, analicé el siguiente trabajo  [referencia](https://www.manasquanschools.org/cms/lib6/NJ01000635/Centricity/Domain/117/2%20Area%20Under%20Curve%20Riemann%20and%20Trap%20Rule.pdf) y llegue a la conclusión de que es posible su implementación; no obstante, aun estoy investigando más pues no me queda tan claro como sería la distribución de los threads. Inicialmente, considero que se podría paralelizar del área de cada rectángulo por thread, pero falta analizar si el numero de recatangulos y por ende el numero de particiones se asignaría de forma manual, o es posible incorporar al algoritmo algún método para la elección de la partición adecuada. 
-En este sentido, continua el trabajo de investigación ya más enfocado a la implementación.
+Busqué algunos ejemplos de paralelización en la siguiente [referencia](http://heather.cs.ucdavis.edu/~matloff/158/PLN/ParProcBook.pdf), para intentar comprender como se realizariá la paralelización en el caso puntual del calculo de AUC y revisé las secciones relativas a OpenMP y a CUDA para ver qué plataforma podríamos usar para el desarrollo del proyecto. Asimismo, analicé el siguiente trabajo  [referencia](https://http://www.ece.utah.edu/~ece6340/LECTURES/Jan30/Numerical%20Integration.pdf) en el que se describen algunos métodos numéricos para calcular la integral. El primero es usando sumas de Riemman tanto por la derecha como por la izquierda, que en esencia es segmentar el dominio, formar rectangulos considerando la altura a partir del punto de la derecha o de la izquierda y sumarlos; el segundo, utilizando la regla de punto medio que comprende básicamente la misma idea de Riemman, pero la altura se considera a partir del punto medio y la regla del trapezio en donde el area se apoxima segmentando en tapecios en lugar de rectangulos. 
+En el trabajo [referencia](http://www.shodor.org/media/content//petascale/materials/UPModules/AreaUnderCurve/AUC_Module_Document_pdf.pdf) se incluye un algoritmo híbrido para el calculo del AUC utilizando Riemman por la izquierda; es decir, una mezca de memoria distribuida y memoria compartida; sin embargo, también indica que se puede ajustar a un algoritmo de memoria compartida asumiendo un proceso con multiples threads, o bien, a una versión con memoria distribuida asumiendo multiples procesos, cada uno con un thread. En esencia el pseudocodigo que incluyen realiza los siguientes pasos: 1) Calcular el ancho del dominio y ancho del rectángulo, 2) Calcular el número de rectangulos, 3) Calcular el limite izquierdo , 4) Para cada rectangulo paralelizado por thread, hacer: a) Calcular el valor x del lado izquierdo, b) Calcular la altura del rectangulo y c) Calcular el área del rectángulo; 5) Calcular la suma total del proceso y 6) Calcular la suma total global.
+
 
 
 - Federico Riveroll
 
-Leí la siguiente [referencia](http://ta.twi.tudelft.nl/mf/users/oosterle/oosterlee/lec8-hit-2009.pdf), para determinar como se podría impementar el algoritmo utilizando caminatas aleatorias, en específico la integración vía MCMC. Considero que esta opción es particularmente interesante por que la paralelización hace mucho sentido. Se pueden realizar diversas caminatas aleatorias en paralelo ya que no depende una de otra y al final juntar todos los puntos y poder ver la distribución.
+Leí la siguiente [referencia](http://genepi.med.utah.edu/~alun/teach/stats/week09.pdf), para determinar como se podría impementar el algoritmo utilizando caminatas aleatorias, en específico la integración vía MCMC. Considero que esta opción es particularmente interesante por que la paralelización hace mucho sentido. Se pueden realizar diversas caminatas aleatorias en paralelo ya que no depende una de otra y al final juntar todos los puntos y poder ver la distribución.
 
 Es interesante particularmente por que las diversas caminatas no dependen la una de la otra y de esta forma la paralelización hace mucho sentido.
 
@@ -36,23 +37,23 @@ Se ha localizado un artículo que parece implementar esta situación en CUDA act
 
 
 # Equipo
-Comentamos sobre cual de las tres alternativas resulta más viable de aplicar, en términos de simplicidad, de precisión y de exactitud; sin embargo, no nos hemos decantado por alguno en particular, pues todavia tenemos incertidumbre en esencia de la paralelización más que del algoritmo a utilizar, razón por la cual, decidimos el transitar en conjunto por las tres vias para ver si en el camino nos resulta más intuitivo de implementar. Asimismo, hasta el momento hemos optado por la implementación en CUDA pues revisando los ejemplos nos resulta más fácil de leer.
+Comentamos sobre cual de las tres alternativas resulta más viable de implementar; sin embargo, como no nos hemos decantado por alguna en particular, inicialmente estamos pensando implementar las tres para comparar su desempeño. Asimimsmo, tenemos planteado realizar la implementación en CUDA.
 
-Para estructurar los avances decidimos generar el siguiente cronograma para las primeras tres entregas:
+Finalmente, para estructurar los avances decidimos generar el siguiente cronograma para las primeras tres entregas:
 
 - 10-04-2018: Entrega primer avance.
 
-- 11-04-2018: Revisión del docker file que servirá para desarrollar el proyecto, en caso de que no se pueda generar de forma satisfactora, levantar las instancias en AWS para iniciar la implementación cuanto antes.
+- 11-04-2018: Revisión del docker file que servirá para desarrollar el proyecto, o en su caso, levantar las instancias en AWS para iniciar la implementación cuanto antes.
 
-- 12-04-2018: Revisión de investigación implementaciones.
+- 12-04-2018: Revisión de investigación relativa a implementaciones más a detalle.
 
-- 14-04-2018: Pruebas iniciales implementación y revisión de alternativas.
+- 14-04-2018: Pruebas iniciales de implementación y revisión de alternativas.
 
 - 17-04-2018: Entrega segundo avance.
 
-- 20-04-2018: En caso de implementación exitosa, buscar robustecer el algoritmo. En otro caso, buscar soluciones a problematica puntual.
+- 20-04-2018: En caso de implementación exitosa de las tres alternativas, realizar comparativo de desempeño. En otro caso, buscar soluciones a problematica puntual.
 
-- 22-04-2018: Revisión de nuevo algoritmo y fallas detectadas en el mismo.
+- 22-04-2018: Revisión de algoritmos y fallas detectadas en el mismo.
 
 - 24-04-2018: Entrega tercer avance.
 
