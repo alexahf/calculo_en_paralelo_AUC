@@ -12,7 +12,7 @@ Consideramos tres posibles alternativas para la implementación del cálculo del
 - Urilizando el método de Simpson.
 - Utilizando MCMC.
 
-Cada uno de los integrantes procedió a investigar sobre cada una de las alternativas planteadas y su factibilidad de implementación, así como comenzar a analizar de qué forma podría desarrollarse la implementación y cuál camino se seguiría.
+Cada uno de los integrantes procedió a investigar sobre cada una de las alternativas planteadas y su factibilidad de implementación, así como comenzar a analizar de qué forma podría desarrollarse dicha implementación.
 
 - Alejandro Hernández
 
