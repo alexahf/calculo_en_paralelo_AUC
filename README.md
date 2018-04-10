@@ -14,7 +14,7 @@ En la carpeta [avance_10_04_2018](avance_10_04_2018/README.md) se encuentra el p
 # Referencias
 - [http://heather.cs.ucdavis.edu/~matloff/158/PLN/ParProcBook.pdf](http://heather.cs.ucdavis.edu/~matloff/158/PLN/ParProcBook.pdf)
 
-- [https://http://www.ece.utah.edu/~ece6340/LECTURES/Jan30/Numerical%20Integration.pdf](https://http://www.ece.utah.edu/~ece6340/LECTURES/Jan30/Numerical%20Integration.pdf)
+- [http://www.ece.utah.edu/~ece6340/LECTURES/Jan30/Numerical%20Integration.pdf](http://www.ece.utah.edu/~ece6340/LECTURES/Jan30/Numerical%20Integration.pdf)
 
 - [http://www.shodor.org/media/content//petascale/materials/UPModules/AreaUnderCurve/AUC_Module_Document_pdf.pdf](http://www.shodor.org/media/content//petascale/materials/UPModules/AreaUnderCurve/AUC_Module_Document_pdf.pdf)
 
