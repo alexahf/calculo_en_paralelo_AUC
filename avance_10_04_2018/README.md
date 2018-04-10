@@ -32,7 +32,7 @@ Es interesante particularmente por que las diversas caminatas no dependen la una
 
 Como parte de la investigación sobre el método de Simpson: En términos de integración numérica, una forma de aproximar una integral definida en un intervalo [a,b] podemos subdividir el intervalo y aproximar f  por medio de un polinomio de primer grado. El método utilizado por la regla de Simpson sigue la misma filosofía de aproximación pero lo hace aproximando f en el sub-intervalo por medio de un polinomio de 2° grado.
 La implementación de forma paralela más sencilla es del estilo SIMD Single instruction multiple data que implica particionar el intervalo [a,b] en función de la cantidad de cores, realizar el cálculo de forma separada para cada core y finalmente sumar todas las partes dentro de uno mismo. Actualmente me encuentro consiguiendo el siguiente artículo científico.
-Se ha localizado un artículo que parece implementar esta situación en CUDA actualmente me encuentro consiguiendo el artículo por medio de las bases de datos del ITAM, I. W. A. Swardiana, T. Wirahman and R. Sadikin, "An Efficient Parallel Algorithm for Simpson Cumulative Integration on GPU," 2015 Third International Symposium on Computing and Networking (CANDAR), Sapporo, 2015, pp. 346-349.
+Se ha localizado un artículo que parece implementar esta situación en CUDA actualmente me encuentro consiguiendo el artículo por medio de las bases de datos del ITAM, __I. W. A. Swardiana, T. Wirahman and R. Sadikin, "An Efficient Parallel Algorithm for Simpson Cumulative Integration on GPU," 2015 Third International Symposium on Computing and Networking (CANDAR), Sapporo, 2015, pp. 346-349.__
 
 
 
