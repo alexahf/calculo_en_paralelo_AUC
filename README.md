@@ -22,6 +22,8 @@ En la carpeta [avance_10_04_2018](avance_10_04_2018/README.md) se encuentra el p
 
 - [https://www.manasquanschools.org/cms/lib6/NJ01000635/Centricity/Domain/117/2%20Area%20Under%20Curve%20Riemann%20and%20Trap%20Rule.pdf](https://www.manasquanschools.org/cms/lib6/NJ01000635/Centricity/Domain/117/2%20Area%20Under%20Curve%20Riemann%20and%20Trap%20Rule.pdf)
 
+- [http://ta.twi.tudelft.nl/mf/users/oosterle/oosterlee/lec8-hit-2009.pdf](http://ta.twi.tudelft.nl/mf/users/oosterle/oosterlee/lec8-hit-2009.pdf)
+
 
 
 
