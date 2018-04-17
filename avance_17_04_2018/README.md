@@ -1,4 +1,4 @@
-# Avances 10-04-2018
+# Avances 17-04-2018
 
 # Integrantes
 - Alejandro Hernández 87806
@@ -11,9 +11,7 @@
 
 - Alejandro Hernández
 
-Dentro de lo que se conoce como integración numérica, la regla del trapecio busca calcular el área bajo una curva por realizando una interpolación entre dos puntos por medio de un polinomio de grado 1, es decir una recta, gráficamente:
 
-<div style="text-align:center"><img src ="avance_17_04_2018/trapecio.png " /></div>
 
 
 
@@ -23,7 +21,9 @@ Dentro de lo que se conoce como integración numérica, la regla del trapecio bu
 
 
 - Pablo Soria
+Dentro de lo que se conoce como integración numérica, la regla del trapecio busca calcular el área bajo una curva por realizando una interpolación entre dos puntos por medio de un polinomio de grado 1, es decir una recta, gráficamente:
 
+![](avance_17_04_2018/trapecio.png)
 
 
 
