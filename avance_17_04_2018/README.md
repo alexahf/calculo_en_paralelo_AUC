@@ -15,7 +15,7 @@ En primer lugar incluí un contenedor de docker con CUDA para poder empezar a co
 
 Comencé a leer la documentación de CUDA, para entender mejor sobre kernels, threads y memoria en la siguiente guía que está muy completa: [https://www3.nd.edu/~zxu2/acms60212-40212/CUDA_C_Programming_Guide_V7.5.pdf](https://www3.nd.edu/~zxu2/acms60212-40212/CUDA_C_Programming_Guide_V7.5.pdf).
 
-Se realizaron algunos ejemplos secillos como el Hello World! con Device Code y la suma de dos numeros enteros. Dichos ejemplos, `hello_dc.cu`, `suma.cu` y su output están en la carpeta de este segundo avance.
+Se realizaron algunos ejemplos secillos como el Hello World! con device code y la suma de dos numeros enteros. Dichos ejemplos, `hello_dc.cu`, `suma.cu` y su output están en la carpeta de este segundo avance.
 
 
 
