@@ -126,7 +126,9 @@ Estos algoritmos reciben los valores de la cantidad de intervalos ( recordemos q
 
 Sostuvimos una reunión entre todos los miembros del equipo para comentar los avances que se habían logrado. En resumen, ya todos encontramos ejemplos de implementaciones tanto en secuencial como en paralelo y realizamos algunas implementaciones simples.
 
-Coincidimos que el siguiente paso ahora es comenzar a paralelizar los problemas en CUDA e irnos retroalimentando sobre la problematica o tips de cada uno para hacer más dinámica la implementación.
+Coincidimos que el siguiente paso ahora es comenzar a paralelizar los problemas en CUDA e irnos retroalimentando sobre la problematica detectada para hacer más dinámica la implementación.
+
+Asimismo, consideramos que vamos a tener que ahondar más en la teoría relativa a CUDA para poder entender y desarrollar la paralelización, pues todavía persisten algunas dudas concernientes a la plataforma.
 
 Nos percatamos de que tenemos que acelerar el paso en la implementación para poder cumplir con el objetivo que habíamos establecido en nuestro cronograma, en el cual señalábamos que para el 20-04-2018 ya deberíamos contar con una primera propuesta de implementación.
 
