@@ -11,13 +11,33 @@
 
 - Alejandro Hernández
 
+En primer lugar incluí un contenedor de docker con CUDA para poder empezar a correr algunos ejemplos simples. Para lo anterior, hice un docker pull del siguiente repositorio: [https://hub.docker.com/r/nvidia/cuda/](https://hub.docker.com/r/nvidia/cuda/).
 
+Comencé a leer la documentación de CUDA, para entender mejor sobre kernels, threads y memoria en la siguiente guía que está muy completa: [https://www3.nd.edu/~zxu2/acms60212-40212/CUDA_C_Programming_Guide_V7.5.pdf](https://www3.nd.edu/~zxu2/acms60212-40212/CUDA_C_Programming_Guide_V7.5.pdf).
+
+Se realizaron algunos ejemplos secillos como el Hello World! con Device Code y la suma de dos numeros enteros. Dichos ejemplos, `hello_dc.cu`, `suma.cu` y su output están en la carpeta de este segundo avance.
 
 
 
 - Federico Riveroll
 
+[http://users.stat.umn.edu/~galin/UST.pdf](http://users.stat.umn.edu/~galin/UST.pdf)
 
+Estudiando la integración con el método de Markov Chain Monte Carlo, sacamos la siguiente simplificación para entender el concepto de esta técnica que es simple y efectiva;
+
+El algoritmo consiste en acotar una función en un par de límites para calcular el Área bajo la curva entre dichos límites, la técnica es marcar puntos aleatorios distribuidos de manera uniforme en el plano y contar la proporción que estuvieron debajo de la curva, y este número equivale a integrar y sacar el área en dicha región.
+
+A continuación un ejemplo absolutamente simple:
+
+Si queremos calcuar el AUC de x = y en el intervalo (0,1) Integramos la función 'x' y el resultado es x/2, el área en (0,1) es 1/2.
+
+Esto equivale a trazar una línea diagonal en un plano de 1x1 y dibujar puntos aleatoriamente generando las coordenadas de manera uniforme entre 0 y 1. Al final, con suficientes puntos podremos contar la proporción de puntos que caen bajo la recta y = x. Esa proporción va a ser cercana a 0.5. Que es congruente con el resultado de la integral.
+
+Esta técnica aplica no solo para cualquier función lineal o polinomial, sino que con ella se puede aproximar el volumen entre los planos y el hiperespacio entre las funciones multinomiales.
+
+Otra gran ventaja de usar esta técnica es que cada punto simulado es independiente de los demás, por lo tanto se puede paralelizar y al final promediar y es completamente equivalente el resultado.
+
+El plan será enviar diversos hilos que hagan estas simulaciones (todas con el mismo número de iteraciones) y regresen el resultado. Cuando todos los resultados sean devueltos, se promedian y ese número será nuestro resultado.
 
 
 - Pablo Soria
@@ -103,4 +123,12 @@ Estos algoritmos reciben los valores de la cantidad de intervalos ( recordemos q
 
 
 # Equipo
+
+Sostuvimos una reunión entre todos los miembros del equipo para comentar los avances que se habían logrado. En resumen, ya todos encontramos ejemplos de implementaciones tanto en secuencial como en paralelo y realizamos algunas implementaciones simples.
+
+Coincidimos que el siguiente paso ahora es comenzar a paralelizar los problemas en CUDA e irnos retroalimentando sobre la problematica o tips de cada uno para hacer más dinámica la implementación.
+
+Nos percatamos de que tenemos que acelerar el paso en la implementación para poder cumplir con el objetivo que habíamos establecido en nuestro cronograma, en el cual señalábamos que para el 20-04-2018 ya deberíamos contar con una primera propuesta de implementación.
+
+Finalmente, esperamos que para el tercer avance ya contemos con implementaciones del cálculo de AUC de forma puntual.
 
