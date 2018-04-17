@@ -36,7 +36,7 @@ Desde el punto de vista teórico, podemos realizar los siguientes cálculos para
 
 consideremos el siguiente polinomio de *Lagrange* que aproxima a la funcion *f(x)* en los puntos *a*, *b*  y  *m = (b-a)/2*
 
-$P_{2}(x) = f(a)\frac{(x-m)(x-b)}{(a-m)(a-b)} + f(m)\frac{(x-a)(x-b)}{(m-a)(m-b)} + f(b)\frac{(x-a)(x-m)}{(b-a)(b-m)} $
+$$P_{2}(x) = f(a)\frac{(x-m)(x-b)}{(a-m)(a-b)} + f(m)\frac{(x-a)(x-b)}{(m-a)(m-b)} + f(b)\frac{(x-a)(x-m)}{(b-a)(b-m)} $$
 
 de esta forma podemos expresar a la integreal de *f(x)* como: 
 
@@ -103,22 +103,4 @@ Estos algoritmos reciben los valores de la cantidad de intervalos ( recordemos q
 
 
 # Equipo
-Comentamos sobre cuál de las tres alternativas resulta más viable de implementar; sin embargo, como no nos hemos decantado por alguna en particular, inicialmente estamos pensando implementar las tres para comparar su desempeño. Asimimsmo, tenemos planteado realizar la implementación en CUDA.
 
-Finalmente, para estructurar los avances decidimos generar el siguiente cronograma para las primeras tres entregas:
-
-- 10-04-2018: Entrega primer avance.
-
-- 11-04-2018: Revisión del docker file que servirá para desarrollar el proyecto, o en su caso, levantar las instancias en AWS para iniciar la implementación cuanto antes.
-
-- 12-04-2018: Revisión de investigación relativa a implementaciones más a detalle.
-
-- 14-04-2018: Pruebas iniciales de implementación y revisión de alternativas.
-
-- 17-04-2018: Entrega segundo avance.
-
-- 20-04-2018: En caso de implementación exitosa de las tres alternativas, realizar comparativo de desempeño. En otro caso, buscar soluciones a problematica puntual.
-
-- 22-04-2018: Revisión de algoritmos y fallas detectadas en el mismo.
-
-- 24-04-2018: Entrega tercer avance.
