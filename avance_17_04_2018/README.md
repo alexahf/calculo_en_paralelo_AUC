@@ -9,7 +9,7 @@
 
 
 
-- Alejandro Hernández
+__- Alejandro Hernández__
 
 En primer lugar incluí un contenedor de docker con CUDA para poder empezar a correr algunos ejemplos simples. Para lo anterior, hice un docker pull del siguiente repositorio: [https://hub.docker.com/r/nvidia/cuda/](https://hub.docker.com/r/nvidia/cuda/).
 
@@ -21,11 +21,11 @@ Por otro lado, en cuanto a la paralelización del cálculo del AUC utilizando Ri
 
 - Calcular el ancho del dominio de la función y el ancho del rectángulo.
 
-- Calcular el numero de rectángulos de los cuales el proceso es responsable.
+- Calcular el número de rectángulos de los cuales el proceso es responsable.
 
 - Calcular el límite en x del proceso.
 
-- Para cada rectangulo paralelizado por thread:
+- Para cada rectángulo paralelizado por thread:
 
 	- Calcular el valor x del lado izquierdo del rectángulo.
 	- Calcular la altura del rectángulo.
@@ -36,7 +36,7 @@ Por otro lado, en cuanto a la paralelización del cálculo del AUC utilizando Ri
 - Calcular la suma total global.
 
 
-- Federico Riveroll
+__- Federico Riveroll__
 
 [http://users.stat.umn.edu/~galin/UST.pdf](http://users.stat.umn.edu/~galin/UST.pdf)
 
@@ -57,7 +57,7 @@ Otra gran ventaja de usar esta técnica es que cada punto simulado es independie
 El plan será enviar diversos hilos que hagan estas simulaciones (todas con el mismo número de iteraciones) y regresen el resultado. Cuando todos los resultados sean devueltos, se promedian y ese número será nuestro resultado.
 
 
-- Pablo Soria
+__- Pablo Soria__
 
 Dentro de lo que se conoce como integración numérica, la regla del trapecio busca calcular el área bajo una curva por realizando una interpolación entre dos puntos por medio de un polinomio de grado 1, es decir una recta, gráficamente:
 
@@ -73,16 +73,16 @@ Desde el punto de vista teórico, podemos realizar los siguientes cálculos para
 
 consideremos el siguiente polinomio de *Lagrange* que aproxima a la funcion *f(x)* en los puntos *a*, *b*  y  *m = (b-a)/2*
 
-$$P_{2}(x) = f(a)\frac{(x-m)(x-b)}{(a-m)(a-b)} + f(m)\frac{(x-a)(x-b)}{(m-a)(m-b)} + f(b)\frac{(x-a)(x-m)}{(b-a)(b-m)} $$
+![formaula_1](formula_1.png) 
 
 de esta forma podemos expresar a la integreal de *f(x)* como: 
 
-$$\int\limits_a^b f(x) dx \approx \frac{b-a}{6}  [f(a) + 4f(m) + f(b)]$$
+![formula_2](formula_2.png) 
 
 el principio que subyace detrás de la regla de Simpson de 3/8 es exactamente el mismo pero utilizando 4 puntos en lugar de tres es decir los dos extremos de intervalo y dos puntos intermedios a una equidistancia de *h = (b-a)/3* y utilizando polinomios de *Lagrange* de tercer orden. De este modo la regla de 3/8 de simpson para integración numérica se ve del siguiente modo: 
 
 
-$$\int\limits_a^b f(x) dx \approx \frac{3h}{8}  [f(a) + 3f(\frac{2a+b}{3}) +3f(\frac{a+2b}{3})+ f(b)]$$
+![formula_3](formula_3png) 
 
 
 Hasta este punto hemos formulado la regla de Simpson simple utilizando únicamente un punto medio entre el intervalo [a,b] o 2 puntos equidistantes para el caso de Simpson 3/8 sin embargo para poder realizar una paralelización, es necesario obtener las reglas compuestas y subdidvidr el intervalo en *n* pedazos que eventualmente se podrán enviar a los distintos nodos, a esta extesión se le conoce como regla de Simpson compuesta y la lógica es la siguiente:
@@ -112,6 +112,7 @@ double Simpsons1_3(int m, double a, double b,
 
 ```
 
+
 ```
 double Simpsons3_8(int m, double a, double b, 
 		    double (*func)(double)){
@@ -135,7 +136,7 @@ double Simpsons3_8(int m, double a, double b,
 ```
 Estos algoritmos reciben los valores de la cantidad de intervalos ( recordemos que debe ser par), el intervalo de integración [a,b] y la función f(x) y devuelve el resultado de la suma. Esta función nos servirá más adelante para paralelizar ya que desde este punto de vista, cada nodo recibirá una sub-división del rango entre [a,b] y dividirá este sub intervalo en m partes. 
 
-**Nota:** Eventualmente será necesario poner una regla al momento de elegir el número de subdivisiones que evite los problemas de poner una m que no sea par en el caso de la regla de 1/3 y que m no sea múltiplo de 3 enel caso de la regla de 3/8.
+**Nota:** Eventualmente será necesario poner una regla al momento de elegir el número de subdivisiones que evite los problemas de poner una m que no sea par en el caso de la regla de 1/3 y que m no sea múltiplo de 3 en el caso de la regla de 3/8.
 
 
 
