@@ -63,16 +63,16 @@ __¿Cómo funciona el algoritmo?__
 El algoritmo de integración MC para calcular el área bajo la curva funciona de la siguiente manera:
 
 1) Dada una función, por ejemplo <b>y = cos(x)</b>;
-<img src = "img/uno.jpg"/>
+![uno.jpg](uno.jpg)
 
 2) El algoritmo para calcular el Área bajo la curva consiste en formar un rectángulo en el área que queramos obtener la proporción del área, en este caso en <b> y=1</b>, y en <b>x = Ⲡ / 2</b>;
-<img src = "img/dos.png"/>
+![dos.jpg](dos.jpg)
 
 3) Y luego simular un punto aleatorio dentro de ese rectánculo y ver si cae abajo de la curva Y=cos(x) o arriba de ella;
-<img src="img/tres.png"/>
+![tres.jpg](tres.jpg)
 
 4) Repetir la simulación de los puntos y contar los que están abajo de <b>Y = cos(x)</b> y dividirlos entre el total;
-<img src="img/cuatro.png"/>
+![cuatro.jpg](cuatro.jpg)
 
 
 5) Al repetír el proceso muchas veces, la proporción de elementos bajo la curva es el área proporcionada en dicho rectánculo. Para que este proceso funcione en ecuaciones más complicadas se necesita iterar muchísimas veces.
