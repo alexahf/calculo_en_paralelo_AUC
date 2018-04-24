@@ -9,7 +9,7 @@
 
 - Alejandro Hernández
 
-En virtud de que no se encontró puntualmente una implementación en CUDA para el cálculo de AUC usando Riemann y siguiendo la recomendación del profesor, opté por buscar otra extensión de C. Encontré que en esta referencia [http://www.shodor.org/media/content/petascale/materials/UPModules/AreaUnderCurve/AUC_Module_Document_pdf.pdf](http://www.shodor.org/media/content/petascale/materials/UPModules/AreaUnderCurve/AUC_Module_Document_pdf.pdf) también se incluye la implementación en OpenMP y al parecer está bastante bien documentada. Asimismo, en dicho artículo se incluye el siguiente pseudocódigo que es el que buscaría seguir:
+En virtud de que no se encontró puntualmente una implementación en CUDA para el cálculo de AUC usando Riemann y siguiendo la recomendación del profesor, opté por buscar otra extensión de C. Encontré que en esta referencia [http://www.shodor.org/media/content/petascale/materials/UPModules/AreaUnderCurve/AUC_Module_Document_pdf.pdf](http://www.shodor.org/media/content/petascale/materials/UPModules/AreaUnderCurve/AUC_Module_Document_pdf.pdf) también se incluye la implementación en MPI y se aprecia bien documentada. Asimismo, en dicho artículo se incluye el siguiente pseudocódigo que es plan de ejecución que seguiría:
 
 ```
 All processes do the following:
@@ -51,4 +51,55 @@ our_areas[my_current_rectangle_id]
 • Rank 0 adds sums to the_total_sum
 ```
 
-Como lo había hecho con CUDA, en el caso de OpenMP he estado buscando una imagen de docker que me permita hacer pruebas de forma local; no obstante, aún no he encontrado alguno bueno, por lo que en caso de
+
+
+
+- Federico Riveroll
+
+__Plan de ejecución de Integración MCMC distribuída__
+
+__¿Cómo funciona el algoritmo?__
+
+El algoritmo de integración MC para calcular el área bajo la curva funciona de la siguiente manera:
+
+1) Dada una función, por ejemplo <b>y = cos(x)</b>;
+<img src = "img/uno.jpg"/>
+
+2) El algoritmo para calcular el Área bajo la curva consiste en formar un rectángulo en el área que queramos obtener la proporción del área, en este caso en <b> y=1</b>, y en <b>x = Ⲡ / 2</b>;
+<img src = "img/dos.png"/>
+
+3) Y luego simular un punto aleatorio dentro de ese rectánculo y ver si cae abajo de la curva Y=cos(x) o arriba de ella;
+<img src="img/tres.png"/>
+
+4) Repetir la simulación de los puntos y contar los que están abajo de <b>Y = cos(x)</b> y dividirlos entre el total;
+<img src="img/cuatro.png"/>
+
+
+5) Al repetír el proceso muchas veces, la proporción de elementos bajo la curva es el área proporcionada en dicho rectánculo. Para que este proceso funcione en ecuaciones más complicadas se necesita iterar muchísimas veces.
+
+__¿Cómo se planea implementar el algoritmo?__
+
+En C nativo, simplemente haciendo el pseudocódigo:
+<br>
+<code>
+cuenta = 0
+
+loop ( n veces ) {
+    xi = rand(0, x_objetivo)
+    yi = rand(0, y_objetivo)
+    if (yi < funcion_de(xi, yi)){
+        cuenta ++
+    }
+}
+return cuenta / n
+</code>
+
+__¿Cómo se planea paralelizar?__
+
+Con la librería de OpenMPI para C.
+
+Se planea hacer un programa "molde" que realice n/p simulaciones (sindo p el número de particiones), que envíe desde consola con <b>mpirun -np p programa</b> 'p' instancias del programa que trabajen de manera asíncrona, y que devuelvan cada quien su promedio calculado, cuando los promedios sean regresados que estos mismos se promedien y la distribución de los mismos será <b>Normal con media en el área bajo la curva</b>, después la idea es graficar esos promedios y obtener tanto el AUC como una aplicación (fortuita) del teorema del límite central.
+
+
+
+
