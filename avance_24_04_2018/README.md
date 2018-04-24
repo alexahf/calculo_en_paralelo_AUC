@@ -100,6 +100,84 @@ Con la librería de OpenMPI para C.
 
 Se planea hacer un programa "molde" que realice n/p simulaciones (sindo p el número de particiones), que envíe desde consola con <b>mpirun -np p programa</b> 'p' instancias del programa que trabajen de manera asíncrona, y que devuelvan cada quien su promedio calculado, cuando los promedios sean regresados que estos mismos se promedien y la distribución de los mismos será <b>Normal con media en el área bajo la curva</b>, después la idea es graficar esos promedios y obtener tanto el AUC como una aplicación (fortuita) del teorema del límite central.
 
+- Pablo Soria
 
 
+## Paralelizando 
+
+Empecemos por platicar el enfoque para paralelizar el algoritmo de Simpson:
+
+Desde el punto de vista de la forma de paralelizar, en realidad el proceso es bastante sencillo, seguiremos los pasos típicos de la metodología de Foster para lograr un programa paralelo: 
+
+**1) Particionar el problema en tareas:**
+
+Recordemos que la regla de Simpson, realiza una interpolación cuadrática entre tres puntos, a, b y un punto medio en el caso de la regla de 1/3, sin embargo para poder paralelizar utilizaremos la regla compuesta, la idea detrás de esta regla generar "iteraciones" del mismo proceso es decir dividimos el intervalo en **m** divisiones y aplicamos la regla de simpson para cada intervalo, es decir aplicaremos la regla de simpson el mismo número de veces que la cantidad de subdivisiones.
+
+Al calcular la regla de simspon para cada uno d elos subintervalos y sumarlas, se obtiene una mejor aproximación que utilizando solamente tres puntos iniciales y una sola interpolación. Matemáticamente esto significa **sumar** varias aproximaciones:
+
+![simspon_compuesta](/home/pasoga/Desktop/MNO/simpson_parallel/simsposn_compuesta.png  "simspon_compuesta")
+
+
+Cada una de estas sumas será enviada a un proceso distinto, esto tiene dos implicaciones: 
+
+i) Es necesario saber a priori la cantidad de intervalos a utilizar 
+ii) Es necesario calcular los límites de integración locales para cada uno de los procesos
+
+La tarea de cálculo de una integral delimitada de forma local es lo suficientemente pequeña como para que sea paralelizada y dado que este es en realidad un programa SPMD en realidad lo único que nos tenemos que preocupar es de **"mandar"** correctamente los datos i.e límites locales de integración de forma correcta a cada intervalo.
+
+En conclusión podemos identificar dos tareas: 
+
+a) Calcular el área de un solo **pedazo** por medio de la regla de simpson simple 
+
+b)Sumar las áreas de todos los **pedazos**
+
+
+**2) Identificar los canales de comunicación entre las tareas:**
+
+
+Desde el punto de vista de comunicación, dado que desde un punto de vista simplista nuestro porgrama no es mas que una suma de aproximaciones entre 3 puntos, al final sumaremos todos los datos por lo que nos es irrelevante la propiedad de no determinismo es decir nos da igual si uno de los procesos acaba primero que el otro ya que en el paso de regresar al proceso maestro todo se sumará para dar el resultado. 
+
+En conclusión dada la conmutatividad de la suma en el proceso maestro, no nos tenemos que preocupar de que los procesos se comuniquen entre las tareas **"a) Calcular el área de un solo pedazo por medio de la regla de simpson simple "** , la única vía de comunicación se realizará al momento de reportar los cálculos locales a la tarea b).
+
+
+**3) Agregar las tareas en tareas compuestas:**
+
+Dado que nuestro proceso en realidad es una suma de sumas, no requerimos la argupación en tareas compuestas esto debido a que cada proceso se ejecuta de manera independiente y eventualmente regresa al proceso maestro para el resultado final por lo que la única tarea que "agrupa" es nuestro cálculo del resultado final ninguna otra tarea compuesta es requerida. 
+
+
+**4) Mapear las tareas a los procesos/threads:**
+
+Dado que nuestro algoritmo mejora conforme más **"pedazos"** tengamos tengamos subdividiendo la integral realizando el mismo proceso iterativo, por tanto será necesario usar más **"pedazos"** que cores.
+ 
+Una manera sencilla de hacer esto en el contexto de **MPI** es dividir el intervalo *[a,b] en **comm_size** subintervalos, por lo tanto tendremos que aplicar la regla de simpson  a **n / comm_size** pedazos a cada uno de los **comm_size** subintervalos y definir un proceso que realice la suma de todos ellos para obtener el resultado. Veamos como se ve en forma de pesudocódigo en paralelo.
+
+**Pseudocódigo**
+
+```
+1) Obtener, a,b,n ;
+2) h = (b -a ) / n   ;  
+3) local_iter  = n / comm_size ; 
+4) local_idx = my_rank * local_iter //*indice para controlar el número de iteraciones locales en cada subintervalo
+5) calcular local_a = a + local_idx * h y local_b =  my_rank * local_iter + local_iter;
+6) local_integral = f(local_a , local_b , local_n , h);
+7) if(my_rank != 0)
+    send local_integral to process 0; 
+    else 
+       result = local_integral;
+       for(proc = 1; proc < comm_size ; proc ++){
+       Recive local_integral from proc;
+       result += local_integral;
+
+8) if(my_rank==0)
+print result;
+
+```
+
+
+
+# Equipo
+
+Tuvimos una reunión para comentar sobre la implementación y los problemas que estabamos enfrentando. Por lo que pudimos constatar, hay buena documentación de MPI por lo que optaremos por esta implementación.
+
+En este tercer avance, nos dimos a la tarea de hacer el planteamiento de cómo se implementaría a nivel pseudocódigo, para en la siguiente entrega ya comenzar a incluir fragmentos de la implementación.
 
