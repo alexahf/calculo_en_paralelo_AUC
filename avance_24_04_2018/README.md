@@ -103,7 +103,7 @@ Se planea hacer un programa "molde" que realice n/p simulaciones (sindo p el nú
 - Pablo Soria
 
 
-## Paralelizando 
+__Paralelizando__
 
 Empecemos por platicar el enfoque para paralelizar el algoritmo de Simpson:
 
@@ -115,7 +115,7 @@ Recordemos que la regla de Simpson, realiza una interpolación cuadrática entre
 
 Al calcular la regla de simspon para cada uno d elos subintervalos y sumarlas, se obtiene una mejor aproximación que utilizando solamente tres puntos iniciales y una sola interpolación. Matemáticamente esto significa **sumar** varias aproximaciones:
 
-![simspon_compuesta](/home/pasoga/Desktop/MNO/simpson_parallel/simsposn_compuesta.png  "simspon_compuesta")
+![simspon_compuesta](simsposn_compuesta.png)
 
 
 Cada una de estas sumas será enviada a un proceso distinto, esto tiene dos implicaciones: 
