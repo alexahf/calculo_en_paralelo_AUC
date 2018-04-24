@@ -9,7 +9,24 @@
 
 - Alejandro Hernández
 
-En virtud de que no se encontró puntualmente una implementación en CUDA para el cálculo de AUC usando Riemann y siguiendo la recomendación del profesor, opté por buscar otra extensión de C. Encontré que en esta referencia [http://www.shodor.org/media/content/petascale/materials/UPModules/AreaUnderCurve/AUC_Module_Document_pdf.pdf](http://www.shodor.org/media/content/petascale/materials/UPModules/AreaUnderCurve/AUC_Module_Document_pdf.pdf) también se incluye la implementación en MPI y se aprecia bien documentada. Asimismo, en dicho artículo se incluye el siguiente pseudocódigo que es plan de ejecución que seguiría:
+En virtud de que no se encontró puntualmente una implementación en CUDA para el cálculo de AUC usando Riemann y siguiendo la recomendación del profesor, opté por buscar otra extensión de C. Encontré que en esta referencia [http://www.shodor.org/media/content/petascale/materials/UPModules/AreaUnderCurve/AUC_Module_Document_pdf.pdf](http://www.shodor.org/media/content/petascale/materials/UPModules/AreaUnderCurve/AUC_Module_Document_pdf.pdf) también se incluye la implementación en MPI y se aprecia bien documentada. Asimismo, dicho articulo explica el proceso de paralelización como sigue:
+
+La siguiente grafica nos permite tener una representación visual clara del problema a resolver:
+
+![graf_riemann.png](graf_riemann.png)
+
+Posteriormente, identifica la estructura de los datos, lo que son y sus nombres:
+
+![data_structures.png](data_structures.png)
+
+También explica de estructuras de datos que controlan el paralelismo:
+
+![data_parallel.png](data_parallel.png)
+
+Una vez definidas las estructuras de datos se tiene que ver su alcance; es decir, si son publicas o privadas a los threads y a los procesos que los usan y las interacciones que existen entre ellas.
+
+
+Con todo lo anterior, establece el pseudocódigo como sigue:
 
 ```
 All processes do the following:
