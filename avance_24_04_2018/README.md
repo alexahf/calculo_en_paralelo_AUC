@@ -9,7 +9,7 @@
 
 - Alejandro Hernández
 
-En virtud de que no se encontró puntualmente una implementación en CUDA para el cálculo de AUC usando Riemann y siguiendo la recomendación del profesor, opté por buscar otra extensión de C. Encontré que en esta referencia [http://www.shodor.org/media/content/petascale/materials/UPModules/AreaUnderCurve/AUC_Module_Document_pdf.pdf](http://www.shodor.org/media/content/petascale/materials/UPModules/AreaUnderCurve/AUC_Module_Document_pdf.pdf) se incluye la implementación en OpenMP y al parecer está bastante bien documentada. Asimismo, en dicho artículo se incluye el siguiente pseudocódigo que es el que buscaría seguir:
+En virtud de que no se encontró puntualmente una implementación en CUDA para el cálculo de AUC usando Riemann y siguiendo la recomendación del profesor, opté por buscar otra extensión de C. Encontré que en esta referencia [http://www.shodor.org/media/content/petascale/materials/UPModules/AreaUnderCurve/AUC_Module_Document_pdf.pdf](http://www.shodor.org/media/content/petascale/materials/UPModules/AreaUnderCurve/AUC_Module_Document_pdf.pdf) también se incluye la implementación en OpenMP y al parecer está bastante bien documentada. Asimismo, en dicho artículo se incluye el siguiente pseudocódigo que es el que buscaría seguir:
 
 ```
 All processes do the following:
@@ -50,3 +50,5 @@ our_areas[my_current_rectangle_id]
 • Each process sends our_total_sum to Rank 0
 • Rank 0 adds sums to the_total_sum
 ```
+
+Como lo había hecho con CUDA, en el caso de OpenMP he estado buscando una imagen de docker que me permita hacer pruebas de forma local; no obstante, aún no he encontrado alguno bueno, por lo que en caso de
