@@ -9,7 +9,7 @@
 
 - Alejandro Hernández
 
-En virtud de que no se encontró puntualmente una implementación en CUDA para el cálculo de AUC usando Riemann y siguiendo la recomendación del profesor, opté por buscar otra extensión de C. Encontré que en esta referencia ![http://www.shodor.org/media/content/petascale/materials/UPModules/AreaUnderCurve/AUC_Module_Document_pdf.pdf] (http://www.shodor.org/media/content/petascale/materials/UPModules/AreaUnderCurve/AUC_Module_Document_pdf.pdf) se incluye la implementación en OpenMP y al parecer está bastante bien documentada. Asimismo, en dicho artículo se incluye el siguiente pseudocódigo que es el que buscaría seguir:
+En virtud de que no se encontró puntualmente una implementación en CUDA para el cálculo de AUC usando Riemann y siguiendo la recomendación del profesor, opté por buscar otra extensión de C. Encontré que en esta referencia [http://www.shodor.org/media/content/petascale/materials/UPModules/AreaUnderCurve/AUC_Module_Document_pdf.pdf](http://www.shodor.org/media/content/petascale/materials/UPModules/AreaUnderCurve/AUC_Module_Document_pdf.pdf) se incluye la implementación en OpenMP y al parecer está bastante bien documentada. Asimismo, en dicho artículo se incluye el siguiente pseudocódigo que es el que buscaría seguir:
 
 ```
 All processes do the following:
