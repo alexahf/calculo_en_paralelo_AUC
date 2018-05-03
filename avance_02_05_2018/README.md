@@ -60,7 +60,7 @@ int main(int argc, char **argv){
 }
 ```
 
-Con la instruccion para compilar y correr utilizando un rango_inicial=0, rango_final=1 y segmentos=1000:
+Con la instruccion para compilar y correr utilizando un `rango_inicial=0`, `rango_final=1` y `segmentos=1000`:
 
 ```
 gcc riemann_secuencial.c -o riemann_secuencial.out
@@ -73,7 +73,7 @@ Se obtuvo el siguiente resultado:
 
 ![riemann_secuencial](riemann_secuencial.png)
 
-
+El programa en C `riemann_secuencial.c` se encuentra en la carpeta [avance_02_05_2018](avance_02_05_2018/README.md) para su consulta.
 
 __- Federico Riveroll__
 
