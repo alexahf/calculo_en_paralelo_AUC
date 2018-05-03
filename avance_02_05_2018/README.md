@@ -60,7 +60,7 @@ int main(int argc, char **argv){
 }
 ```
 
-Con la instruccion para compilar y correr utilizando un `rango_inicial=0`, `rango_final=1` y `segmentos=1000`:
+Con la instruccion para compilar y correr utilizando `rango_inicial=0`, `rango_final=1` y `segmentos=1000`:
 
 ```
 gcc riemann_secuencial.c -o riemann_secuencial.out
