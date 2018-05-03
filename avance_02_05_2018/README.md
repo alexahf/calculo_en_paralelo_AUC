@@ -73,7 +73,7 @@ Se obtuvo el siguiente resultado:
 
 ![riemann_secuencial](riemann_secuencial.png)
 
-El programa en C `riemann_secuencial.c` se encuentra en la carpeta [avance_02_05_2018](avance_02_05_2018/) para su consulta.
+El programa en C `riemann_secuencial.c` se encuentra en la carpeta [avance_02_05_2018](avance_02_05_2018/riemann_secuencial.c) para su consulta.
 
 __- Federico Riveroll__
 
