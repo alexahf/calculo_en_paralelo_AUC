@@ -232,6 +232,6 @@ Los siguientes pasos serán: Definir y realizar el código en alguna implementac
 
 Realizamos la implementación de forma secuencial utilizando Riemann, MCMC y Simpson. Asimismo, iniciamos el trabajo escrito describiendo los avances realizados hasta el momento.
 
-Dicho trabajo escrito se puede descargar del siguiente vínculo de dropbox:
+Dicho trabajo escrito se puede descargar del siguiente vínculo de dropbox:[https://www.dropbox.com/sh/jxjmroy6zvtml4s/AABCbQfoFnscRR2kWVvwy_0oa?dl=0](https://www.dropbox.com/sh/jxjmroy6zvtml4s/AABCbQfoFnscRR2kWVvwy_0oa?dl=0)
 
 
