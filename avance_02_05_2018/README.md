@@ -11,6 +11,69 @@
 
 __- Alejandro Hernández__
 
+Realicé un programa en C que calcula el AUC de y=x^2 utilizando Riemann de forma secuencial.
+
+Los argumentos de entrada que tiene que definir el usuario son el rango inicial, el rango final y el número de segmentos para realizar la partición. 
+
+De forma general, primero definí la función a la cual se va a calcular el área bajo la curva, calculamos dx, que se puede ver como la base del rectángulo, se calcula el área para cada segmento y finalmente se suman todas las áreas.
+
+El codigo que utilicé fue el siguiente:
+
+```
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+// Definimos la funcion que calcula el x al cuadrado
+long double f(long double *x){
+	return (*x)*(*x);
+}
+
+int main(int argc, char **argv){
+	long long cuenta, segmentos;
+	long double x, y, dx, area = 0.0, rango_inicio, rango_fin;
+
+	//Revisamos los argumentos de entrada. Si no son exactamente 3 argumentos salimos del programa:
+	if(argc <= 3 || argc > 4) {printf("Numero de argumentos erroneo: %i , se esperaban: 3 \n", argc-1);exit(0);}
+
+  // Almacenamos los 3 argumentos de entrada:
+  rango_inicio  = atof(argv[1]);
+	rango_fin	= atof(argv[2]);
+	segmentos 	= atoi(argv[3]);
+
+  // Revisamos que el rango de inicio sea menor al de fin y que el número de segmentos sea mayor o igual a uno. En caso opuesto salimos del programa:
+	if(rango_fin <= rango_inicio || segmentos < 1) {printf("Argumento erroneo, revisar que inicio<fin y segmentos>=1\n");exit(0);}
+
+	// Calculamos de dx:
+	dx = (rango_fin-rango_inicio)/(long double)segmentos;
+
+	// Calculamos el area para cada segmento y los sumamos:
+	for(cuenta = 0; cuenta < segmentos; cuenta++){
+		x = cuenta*dx;
+		y = f(&x);
+		area += y*dx;
+	}
+
+	printf("AUC utilizando Riemann:  %Lf\n", area);
+
+	return(0);
+}
+```
+
+Con la instruccion para compilar y correr utilizando un rango_inicial=0, rango_final=1 y segmentos=1000:
+
+```
+gcc riemann_secuencial.c -o riemann_secuencial.out
+
+./riemann_secuencial.out 0 1 1000
+
+```
+
+Se obtuvo el siguiente resultado:
+
+![riemann_secuencial](riemann_secuencial.png)
+
+
 
 __- Federico Riveroll__
 
@@ -29,6 +92,7 @@ A continuación el programa:<br>
 integra_x2_igual_y.c
 <i>
 
+```
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -53,6 +117,7 @@ int main()
 
     return 0;
 }
+```
 
 </i>
 <br>
@@ -165,12 +230,8 @@ Los siguientes pasos serán: Definir y realizar el código en alguna implementac
 
 # Equipo
 
-Sostuvimos una reunión entre todos los miembros del equipo para comentar los avances que se habían logrado. En resumen, ya todos encontramos ejemplos de implementaciones tanto en secuencial como en paralelo y realizamos algunas implementaciones simples.
+Realizamos la implementación de forma secuencial utilizando Riemann, MCMC y Simpson. Asimismo, iniciamos el trabajo escrito describiendo los avances realizados hasta el momento.
 
-Coincidimos que el siguiente paso ahora es comenzar a paralelizar los problemas en CUDA e irnos retroalimentando sobre la problemática detectada para hacer más dinámica la implementación.
+Dicho trabajo escrito se puede descargar del siguiente vínculo de dropbox:
 
-Asimismo, consideramos que vamos a tener que ahondar más en la teoría relativa a CUDA para poder entender y desarrollar la paralelización, pues todavía persisten algunas dudas concernientes a la plataforma.
 
-Nos percatamos que tenemos que acelerar el paso en la implementación para poder cumplir con el objetivo que habíamos establecido en nuestro cronograma, en el cual señalábamos que para el 20-04-2018 ya deberíamos contar con una primera propuesta de implementación.
-
-Finalmente, esperamos que para el tercer avance ya contemos con implementaciones para el cálculo de AUC de forma puntual.
