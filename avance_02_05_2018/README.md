@@ -234,4 +234,6 @@ Realizamos la implementación de forma secuencial utilizando Riemann, MCMC y Sim
 
 El trabajo escrito se puede descargar del siguiente vínculo de dropbox:[https://www.dropbox.com/sh/jxjmroy6zvtml4s/AABCbQfoFnscRR2kWVvwy_0oa?dl=0](https://www.dropbox.com/sh/jxjmroy6zvtml4s/AABCbQfoFnscRR2kWVvwy_0oa?dl=0)
 
+Nuestro objetivo para el avance de la siguiente semana es ya contar con la implementación del calculo del AUC en paralelo bajo los 3 métodos.
+
 
