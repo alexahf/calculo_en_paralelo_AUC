@@ -445,7 +445,6 @@ Realizamos la implementación de forma distribuida utilizando Riemann, MCMC y Si
 
 El avance en el trabajo escrito se puede descargar del siguiente vínculo de dropbox:
 
-https://www.dropbox.com/s/8t30qyb6bvy7lki/all.pdf?dl=0
-https://www.dropbox.com/s/8t30qyb6bvy7lki/all.md?dl=0
+[https://www.dropbox.com/sh/jxjmroy6zvtml4s/AABCbQfoFnscRR2kWVvwy_0oa?dl=0](https://www.dropbox.com/sh/jxjmroy6zvtml4s/AABCbQfoFnscRR2kWVvwy_0oa?dl=0)
 
 
