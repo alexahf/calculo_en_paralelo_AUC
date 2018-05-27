@@ -29,6 +29,14 @@ Detalla que hay evidencia que sugiere que CUBLAS tiene un mucho mejor desempeño
 
 Un punto que destaca y que me parece fundamental es que las transferencias de CPU a GPU deben de ser mínimas. Todas las operaciones que se requieren para la bidiagonalización se hace en los datos locales en la GPU usando CUBLAS; es decir, que la bidiagonalización se hace en sitio y una ves que A ya ha sido bidiagonalizada en la GPU, sólo la diagonanal y la superdiagonal se copian a la CPU para la diagonalización que se detalla a continuación.
 
+La matriz bidiagonal se puede reducir a una matriz diagonal apclicando interativamente el algoritmo QR. La matriz B que se obtiene en el primer paso se descompone como sigue: S = X^t*B*Y donde S es una matriz diagonal, X y Y son matrices unitarias ortogonales.
+
+El autor detalla el pseutocodigo para el proceso de diagonalización, en el cual en cada iteración se actualizan los elementos de la diagonal y de la superdiagonal de tal manera que los elementos de la superdiagonal son menores que su valor anterior. El algoritmo converge a las d_i's que son los valores singulares y X y Y^t contiene los vectores singulares de B.
+
+El proseso de doaongalización se puede implementar en la Gpu, copiando la diagonal y la superdiagonal a la CPU, aplicando las rotaciones de Givens a B y calculando los coeficientes de los vectores.
+
+
+
 
 
 
