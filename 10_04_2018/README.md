@@ -23,6 +23,12 @@ Es importante destacar que el autor indica que este método es computacionalment
 
 El autor incorpora el pseudocódigo del algoritmo de bidiagonalización utilizando el esquema por bloques.
 
+Señala que cada paso del algoritmo se puede ejecutar usando funciones de CUDA BLAS (CUBLAS), indicando que CUBLAS tiene un alto desempeño en las operaciones matriz-vector y matriz-matriz. Asimismo, el esquema por bloques para la bidiagonalización se pude calcular de forma eficiente debido al gran desempeño que tiene en el producto matiz-vector y matriz-matriz, aun cuando una de las dimenisones es pequeña.
+
+Detalla que hay evidencia que sugiere que CUBLAS tiene un mucho mejor desempeño cuando trabaja con matrices que tienen dimenciones que son multiplos de 32 por temas de alineamiento de memory, por lo que se incorporaran ceros en los vectors y matrices de tal forma que su dimensión sea mutliplo de 32.
+
+Un punto que destaca y que me parece fundamental es que las transferencias de CPU a GPU deben de ser mínimas. Todas las operaciones que se requieren para la bidiagonalización se hace en los datos locales en la GPU usando CUBLAS; es decir, que la bidiagonalización se hace en sitio y una ves que A ya ha sido bidiagonalizada en la GPU, sólo la diagonanal y la superdiagonal se copian a la CPU para la diagonalización que se detalla a continuación.
+
 
 
 
