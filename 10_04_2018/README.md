@@ -43,6 +43,17 @@ Por otro lado, como la trasformación de columnas es similar a la de los renglon
 
 Finalmente, cuando converge el algoritmo, las d_i's contienen los valores singulares. Y^t y X estan en el devie y se utilizan para el calculo de las matrices ortogonales U y V, realizando dos multiplicaciones matriz-matriz al final para calcular las matrices ortogonales U = Q*X y V^t = (P*Y)^t utilizando las rutinas de CUBLAS. Las matrices Q, P^t, X^t, U y V^y estan en el device. Las matrices ortogonales U y V^t entonces pueden ser copiadas al CPU. 
 
+En la parte de resultados en el articulo se analiza el desempeño del algoritmo con la implementación de SVD en Matlab y Intel MKL 10.0.4 LAPACK. Asimismo, se probó el algoritmo en una Intel Dual Core 2.66GHz PC y el los siguientes GPUS: NVIDIA GeFOrce 8800 GTX, NVIDIA GTX 280 y NVIDIA Tesla S1070.
+
+Para lo anterior, se generaron 10 matrices densas aleatorias en precisión simple considerando varios tamaños de matriz, desde 64 X 64 hasta 8K X 2K.
+
+Como resultados principales se menciona que para matrices pequeñas, el CPU tuvo mejor desempeño que la GPU. Asimismo, señala que probaron con varios tamaños de bloque dependiendo del tamaño de la matriz y que el desempeño en matrices cuadradas aumentó utilizando el paradigma de más bloques para matrices más grandes.
+
+Finalmente compararon su algoritmo de diagonalización con el algoritmo de diagonalización de Intel MKL y concluyen que éste ultimo arroja mejores resultados para la matrices pequeñas pero el desempeño de la PU mejora con el tamaño de la matriz. En este punto, la diagonalización es la que contribuye en mayor medida a esta mejora en el desempeño en la GPU pues la bidiagonalización toma mas tiempo en el CPU que la diagonalización; sin embargo, en la GPU la diagonalización es más rápida.
+
+El articulo concluye indicando que usando su implementación híbrida para la diagonalización (i.e. partir los calculos entre el CPU y la GPU) pueden calcular la SCD de matrices muy grandes hasta el orden de 14K, lo cual resulta imposible en CPU debido a limitantes en la memoria.
+
+Asimsimo, señalan que a pesar que las GPU's estan limitadas a numeros en precisión simple, el error debido a la menor precision fue menor del 0.001% en las matrices con las que probaron y hay que tener en mente que esta limitante esta cambiando con las nuevas generaciones de GPU's.
 
 
 
