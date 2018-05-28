@@ -33,7 +33,15 @@ La matriz bidiagonal se puede reducir a una matriz diagonal apclicando interativ
 
 El autor detalla el pseutocodigo para el proceso de diagonalización, en el cual en cada iteración se actualizan los elementos de la diagonal y de la superdiagonal de tal manera que los elementos de la superdiagonal son menores que su valor anterior. El algoritmo converge a las d_i's que son los valores singulares y X y Y^t contiene los vectores singulares de B.
 
-El proseso de doaongalización se puede implementar en la Gpu, copiando la diagonal y la superdiagonal a la CPU, aplicando las rotaciones de Givens a B y calculando los coeficientes de los vectores.
+El proceso de diaongalización se puede implementar en la GPU, copiando la diagonal y la superdiagonal a la CPU, aplicando las rotaciones de Givens a B y calculando los coeficientes de los vectores.
+
+El autor indica que en el algoritmo hay calculos que dependen del renglon anterior, lo que dificulta la paralelización; no obstante, los resultados para todos los elementos del renglon puenden calcularse en paralelo, utiliznado thread proccessors de la GPU para procesar los elmentdo de cada renglon en paralelo. La transformación de las matrices Y^t y X se realiza en paralelo en el GPU. Un swap kernel se llama para ordenar los vectores y las matrices Y^t y X se inicializan a la identidad en el device.
+
+El algoritmo de diagonalización propuesto divide un renglon de la matriz en blocuqes y cada thread opera en un elmento del renglón. El articulo señala que esta división de renglon en bloques y en ciclo se puede hacer eficientemente con la arquitectura de CUDA pues cada thread hace operaciones independientes, los datos requeridos por el bloque son almacenados en ela memoria compartida y las operaciones ejecutadas en el multiprocesador de la siguiente forma: en cada iteración del ciclo se modifican dos renglones de la matriz y como el segundo renglon es nuevamnete mofificado en la siguiente iteración, sólo el primer renglon actualizado es copiado de regreso al device mientras el segundo renglon actualizado se queda en la memoria copartida para la siguiente iteración. La memoria compartida es reusada para copiar el tercer renglon para la siguiente iteración y la iteración continua. El procedimiento de transformación de los renglones hacia adelante es muy parecido al procedimiento hacia atras. 
+
+Por otro lado, como la trasformación de columnas es similar a la de los renglones, se usa el kernel de la transformación por renglon sobre los renglones de X^t en lungar de las columnas de X.
+
+Finalmente, cuando converge el algoritmo, las d_i's contienen los valores singulares. Y^t y X estan en el devie y se utilizan para el calculo de las matrices ortogonales U y V, realizando dos multiplicaciones matriz-matriz al final para calcular las matrices ortogonales U = Q*X y V^t = (P*Y)^t utilizando las rutinas de CUBLAS. Las matrices Q, P^t, X^t, U y V^y estan en el device. Las matrices ortogonales U y V^t entonces pueden ser copiadas al CPU. 
 
 
 
