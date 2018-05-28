@@ -41,14 +41,29 @@ En esta sección el articulo describe los métodos de descenso cordenada, metodo
 En relación al primer metodo, los autores indican que calcular el gradiente total requiere operaciones matriz-vector en cada iteración, lo cual resulta caro, una operación más "barata" es escoger una coordenada i de x y solo modificar la correspondiente variable x_i para mejorar la función obejtivo. La forma general del descenco por coordenada se describe a continuación:
 
 1. Escoger un indice i_k E {1,2,...,p} 
-2. x^{k+1} = x^k - alpha * grad{F(x^k)}_{ik}* e_{ik}
+2. x^{k+1} = x^k - alpha * grad{F(x^k)}_{ik} * e_{ik}
 
 La clave en este algoritmo es la selección de la coordenada i en cada iteración, para los cual, lo autores sugieren que se lleve a cabo una elección aleatoria del de la coordenada.
 
 El segundo método que describen es descenso estocástico, que a diferencia del método descrito con antelación, actualiza todas las coordenadas o entradas de forma simultánea pero usando una aproximación del gradiente. En este caso el algoritmo es como sigue:
 
 1. Escoger un índice j_k E {1,2,...,n} de manera uniforme aleatoria.
-2. x^{k+1} = x^k - lambda_k * grad{F(x^k)}_{jk}
+2. x^{k+1} = x^k - alpha_k * grad{F(x^k)}_{jk}
+
+En este caso la clave es la elección de los puntos j en cada iteración y de igual manera los autores señalan que se obtienen mejores tasas de convergencia si sse selecciona j de manera uniforme aleatoria.
+
+Para el tercer método los autores indican que la idea es aproximar M a traves de Q(Q^tM) con Q E R^{p x r} o construir una representación de bajo ranjo por columna o por renglon para acelerar los cálculos. El algoritmo en este caso es como sigue:
+
+Requerimos una matriz M de dimensión R^{p x p} y un entero r,
+
+1. Escogemos Omega en R^{p x r} iid N(0,1)
+2. W = M * Omega
+3. QR = W
+4. U = M^t * Q
+5. Regresamos M^{hat}_(r) = QU^t
+
+
+
 
 
 
