@@ -2,7 +2,7 @@
 
 El artículo comienza señalando que en la optimización convexa se está reinvendo en referencia al Big Data, donde el tamaño de los datos y los poaramteros para problemas de optimizaciòn son demasiando grandes como para ser procesados localmente, y donde inclusive para el algebra lineal básica se tiene que adoptar una nueva estrategia para realizar las operaciones. En este nuevo paradigma basado en "tamaño", los algoritmos convexos ya no tienen necesidad de buscar soluciones muy precisas, pues los modelos de Big Data son necesariamente simple o inexactos.
 
-En la sección "The basics" describen el fundamento de la "Big Data Optimization" con la siguiente funcion compuesta: F^* = min{F(x) = f(x) + g(x) : x E R^p} donde f y g son funciones convexas.
+En la sección "The basics" describen el fundamento de la "Big Data Optimization" con la siguiente funcion compuesta: F^* = min{F(x) = f(x) + g(x) : x en R^p} donde f y g son funciones convexas.
 
 El artículo esta estructurado sobre los siguientes 3 puntos siguientes:
 
@@ -40,14 +40,14 @@ En esta sección el articulo describe los métodos de descenso cordenada, metodo
 
 En relación al primer metodo, los autores indican que calcular el gradiente total requiere operaciones matriz-vector en cada iteración, lo cual resulta caro, una operación más "barata" es escoger una coordenada i de x y solo modificar la correspondiente variable x_i para mejorar la función obejtivo. La forma general del descenco por coordenada se describe a continuación:
 
-1. Escoger un indice i_k E {1,2,...,p} 
+1. Escoger un indice i_k en {1,2,...,p} 
 2. x^{k+1} = x^k - alpha * grad{F(x^k)}_{ik} * e_{ik}
 
 La clave en este algoritmo es la selección de la coordenada i en cada iteración, para los cual, lo autores sugieren que se lleve a cabo una elección aleatoria del de la coordenada.
 
 El segundo método que describen es descenso estocástico, que a diferencia del método descrito con antelación, actualiza todas las coordenadas o entradas de forma simultánea pero usando una aproximación del gradiente. En este caso el algoritmo es como sigue:
 
-1. Escoger un índice j_k E {1,2,...,n} de manera uniforme aleatoria.
+1. Escoger un índice j_k en {1,2,...,n} de manera uniforme aleatoria.
 2. x^{k+1} = x^k - alpha_k * grad{F(x^k)}_{jk}
 
 En este caso la clave es la elección de los puntos j en cada iteración y de igual manera los autores señalan que se obtienen mejores tasas de convergencia si sse selecciona j de manera uniforme aleatoria.
@@ -61,6 +61,12 @@ Requerimos una matriz M de dimensión R^{p x p} y un entero r,
 3. Q * R = W
 4. U = M^t * Q
 5. Regresamos M^{hat}_(r) = Q * U^t
+
+Los autores resaltan que debido a los nuevos requerimientos de póder de computo y almacenamiento a un consumo de energia razonable, se debe de incrementar el uso de cómputo distribuido y paralelo.
+
+Mencionan que hay dos dificultades al utilizar hardware distribuido en metodos de primer orden. En primer lugar la comunicación, pues una deficiente comunicación entre computadoras y entre la memoria local pueden reducir la eficiencia numerica al utilizas métodos de primer orden. Para contrarrestar este efecto se utilizan dos estrategias: diseñar algoritmos que minimicen la comunicación y elmiminar el vector maestro x^k y en su lugar trabajar con una copia local en cada maquina de tal forma que lleguen a una X^* consensuada al converger.
+
+La segunda dificultad radica en la sincronización, pues para realizar los cálculos de manera exacta de forma distribuida, los métodos de primer orden tienen que coordinar las actividades de diferentes computadoras cuyas primitivas numericas dependen en el mismo vector x^k en cada iteración. Para contrarrestar este problema, se desarrollan algoritmos asíncronos que permiten actualizaciones usandos versiones anteriores del parámetros.
 
 
 
