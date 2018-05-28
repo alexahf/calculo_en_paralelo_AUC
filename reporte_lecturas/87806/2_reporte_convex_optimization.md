@@ -32,6 +32,22 @@ Indican que este algorimo es altamente recomendable para optimización distribui
 
 Finalmente, comentan que el algoritmo ADMM tiene dos puntos negativos y es que se tiene que una parte del mismo se tiene que resolver numericamente y la otra es que si se realiza la extensiòn a tener dos términos objetivo, la convergencia ya no se está garantizada. Para este último punto relativo a funciones objetivo con más de dos térimios, se pueden utilizar técnicas descomposición dual para tratar los múltiples términos en la función objetivo por serparado y resolverlos de forma simultanea en paralelo.
 
+__Randomización__
+
+En problemas de gran escala para métodos de primer orden se utilizan aproximaciones aleatorias.
+
+En esta sección el articulo describe los métodos de descenso cordenada, metodos de gradiente estocástico y aleatoriedad en algebra lineal.
+
+En relación al primer metodo, los autores indican que calcular el gradiente total requiere operaciones matriz-vector en cada iteración, lo cual resulta caro, una operación más "barata" es escoger una coordenada i de x y solo modificar la correspondiente variable x_i para mejorar la función obejtivo. La forma general del descenco por coordenada se describe a continuación:
+
+1. Escoger un indice i_k E {1,2,...,p} 
+2. x^{k+1} = x^k - alpha * grad{F(x^k)}_{i,k}* e_{ik}
+
+La clave en este algoritmo es la selección de la coordenada i en cada iteración, para los cual, lo autores sugieren que se lleve a cabo una elección aleatoria del de la coordenada.
+
+El segundo método que describen es descenso estocástico, 
+
+
 
 
 
