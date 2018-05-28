@@ -58,9 +58,9 @@ Requerimos una matriz M de dimensión R^{p x p} y un entero r,
 
 1. Escogemos Omega en R^{p x r} iid N(0,1)
 2. W = M * Omega
-3. QR = W
+3. Q * R = W
 4. U = M^t * Q
-5. Regresamos M^{hat}_(r) = QU^t
+5. Regresamos M^{hat}_(r) = Q * U^t
 
 
 
