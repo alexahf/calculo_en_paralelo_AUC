@@ -1,4 +1,4 @@
-### Reporte de la lectura "Singular Value Descomposition on GPU using CUDA" de Sheetal Lahabar y P.J. Narayanan.
+### Reporte del artículo "Singular Value Descomposition on GPU using CUDA" de Sheetal Lahabar y P.J. Narayanan.
 
 La lectura comienza dando una breve introducción sobre la utilidad de la descomposición en valores singulares (SVD), resalta que la SVD se utiliza para factorizar matrices triangulares, para encontrar la pseudoinversa de una matriz, para resolver sistemas de ecuaciones lineales y para resolver el problema de mínimos cuadrados. Asimismo, se utiliza en aplicaciones relacionadas con componentes principales, procesamiento de señales, reconocimiento de patrones y procesamiento de imágenes, entre muchas otras aplicaciones.
 
