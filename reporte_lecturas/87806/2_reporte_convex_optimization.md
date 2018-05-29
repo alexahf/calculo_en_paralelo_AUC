@@ -83,7 +83,7 @@ Cuando la función objetivo se puede descomponer, en realidad se puede aplicar l
 
 Los autores señalan que los algorimos de primer orden con aleatoriedad resultan efectivos inclusive en ambientes descentralizados y asíncronos con posibilidad de comunicar las fallas.
 
-Finalmente, el articulo concluye indicando que como las restricciones de sincronización y de comunicación del hardware actual son las que dictan la elección del algoritmo a utilizar, se espera que se desarrollen nuevas herramientas para adaptar los algoritmos de convexidad a plataformas computacionales heterogéneas. Asimismo, los autores predicen que se incrementará el uso de modelos compuestos.
+Finalmente, el artículo concluye indicando que como las restricciones de sincronización y de comunicación del hardware actual son las que dictan la elección del algoritmo a utilizar, se espera que se desarrollen nuevas herramientas para adaptar los algoritmos de convexidad a plataformas computacionales heterogéneas. Asimismo, los autores predicen que se incrementará el uso de modelos compuestos.
 
 
 
