@@ -68,6 +68,13 @@ Mencionan que hay dos dificultades al utilizar hardware distribuido en metodos d
 
 La segunda dificultad radica en la sincronización, pues para realizar los cálculos de manera exacta de forma distribuida, los métodos de primer orden tienen que coordinar las actividades de diferentes computadoras cuyas primitivas numericas dependen en el mismo vector x^k en cada iteración. Para contrarrestar este problema, se desarrollan algoritmos asíncronos que permiten actualizaciones usandos versiones anteriores del parámetros.
 
+En sistemas grandes comunicar el gradiente o sus elementos a una locación en el sistema central puede crear un cuello de botella en las comunicaciones. En estos casos, el descenso por coordenadas o entrada puede presentar una alternativa para reducir las comunicaciones, aplicando varias actualizaciones de descenso por coordenadas al mismo tiempo en paralelo pues la ventaja es que cada procesador sólo tiene que comunicar una actualización de coordenada o entrada.
+
+Cuando la función objetivo se puede descomponer, en realidad se puede aplicar la versión paralela del algoritmo secuencial.
+
+Los autores señalan que los algorimos de primer orden con aleatoriedad resultan efectivos inclusive en ambientes descentralizados y asíncronos con posibilidad de comunicar las fallas.
+
+Finalmente, el articulo concluye indicando que como las restricciones de sincronización y de comunicación del hardware actual son las que dictan la elección del algorito a utilizar, se espera que se desarrollen nuevas herramientoas  para adapatr los algoritmos de convexidad a plataformas computacionales heterogéneas. Asimismo, los autores predicen que se incrementará el uso de modelos compuestos.
 
 
 
