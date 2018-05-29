@@ -68,6 +68,9 @@ Requerimos una matriz M de dimensión R^{p x p} y un entero r,
 4. U = M^t * Q
 5. Regresamos M^{hat}_(r) = Q * U^t
 
+
+__Cómputo paralelo y distribuido__
+
 Los autores resaltan que debido a los nuevos requerimientos de póder de computo y almacenamiento a un consumo de energía razonable, se debe de incrementar el uso de cómputo distribuido y paralelo.
 
 Mencionan que hay dos dificultades al utilizar hardware distribuido en métodos de primer orden. En primer lugar la comunicación, pues una deficiente comunicación entre computadoras y entre la memoria local pueden reducir la eficiencia numérica al utilizar métodos de primer orden. Para contrarrestar este efecto se utilizan dos estrategias: diseñar algoritmos que minimicen la comunicación y eliminar el vector maestro x^k y en su lugar trabajar con una copia local en cada máquina de tal forma que lleguen a una X^* consensuada al converger.
