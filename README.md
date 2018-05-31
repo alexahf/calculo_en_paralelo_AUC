@@ -1,14 +1,25 @@
-## Instrucciones para compilar las implementaciones:
-
-En la carpeta [implementaciones](avance_30_05_2018/implementaciones/) se encuentran las implementaciones que se llevaron a cabo. Dicha carpeta esta segmentada en 2 subcarpetas:
-
-La primera carpeta tiene las implementaciones en [secuencial](avance_30_05_2018/implementaciones/secuencial) de las tres metodologias: Simpson, Riemann y MCMC.
-
-- La segunda carpeta tiene las impementaciones en [paralelo](avance_30_05_2018/implementaciones/paralelo) de las tres metodologías, considerando tres funciones de prueba: x^2, cos(x) y exp(x).
+## Instrucciones para compilar y ejecutar las implementaciones en secuencial.
 
 
-SECUENCIAL:
+__Simpson__
 
-Para compliar los codigos secuenciales se utiliza la siguiente expresion:
+Para compilar: gcc simpson_secuencial.c -o simpson_secuencial.out
 
-- En la carpeta  se encuentra el primer avance de nuestro proyecto.
+Para ejecutar: ./simpson_secuencial.out
+
+El sistema pide que se ingrese el numero de iteraciones y se presiona enter, el limite inferior y se presiona enter, el limite superior y se presiona enter.
+
+
+__Riemann__
+
+Para compilar: gcc riemann_secuencial.c -o riemann_secuencial.out
+
+Para ejecutar: ./riemann_secuencial.out
+
+
+__MCMC__
+
+Para compilar: gcc mcmc_secuencial.c -o mcmc_secuencial.out
+
+Para ejecutar: ./mcmc_secuencial.out
+
