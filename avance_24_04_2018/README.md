@@ -177,9 +177,3 @@ print result;
 
 
 
-# Equipo
-
-Tuvimos una reunión para comentar sobre la implementación y los problemas que estabamos enfrentando. Por lo que pudimos constatar, hay buena documentación de MPI por lo que optaremos por esta implementación.
-
-En este tercer avance, nos dimos a la tarea de hacer el planteamiento de cómo se implementaría a nivel pseudocódigo, para en la siguiente entrega ya comenzar a incluir fragmentos de la implementación.
-
