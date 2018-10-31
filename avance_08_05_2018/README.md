@@ -1,16 +1,5 @@
 # Avances 08-05-2018
 
-# Integrantes
-- Alejandro Hernández 87806
-- Federico Riveroll 105898
-- Pablo Soria 111969
-
-# Individual
-
-
-
-__- Alejandro Hernández__
-
 Realicé un programa en MPI que calcula el AUC de y=x^2 utilizando Riemann segmentando áreas para calcularlas en procesadores distintos y después sumándolas para encontrar el ára bajo la curva global.
 
 Los argumentos de entrada que tiene que definir el usuario son el rango inicial, el rango final y el número de segmentos para realizar la partición.
@@ -100,10 +89,8 @@ Se obtuvo el siguiente resultado:
 El programa en C `mpi_riemann.c` se encuentra en la carpeta `avance_08_05_2018` para su consulta.
 
 
-__- Federico Riveroll__
 
-
-Realicé un programa en MPI que calcula el AUC de y=x^2 utilizando MCMC separando los procesos para hacer diversos cálculos de menores iteraciones y mayor margen de error pero después juntándolos usando open MPI. 
+Asimismo, realicé un programa en MPI que calcula el AUC de y=x^2 utilizando MCMC separando los procesos para hacer diversos cálculos de menores iteraciones y mayor margen de error pero después juntándolos usando open MPI. 
 
 Para iniciar el ambiente MPI local hay que correr comando:
 >lamboot
@@ -156,13 +143,7 @@ Podemos ver que el promedio es 0.3223 lo cual correspondeal resultado secuencial
 
 El objetivo del siguiente avance es hacer 200 pedazos de 100 experimentos y hacer un histograma, y después intentar sacar el óptimo de pedazos-num experimentos para obtener el mejor rendimiento en varianza y tiempo.
 
-__- Pablo Soria__
-
-
-
-## Paralelizando 
-
-Avance 5 09/05/2018 Pablo Soria Garcia
+Finalmente para Simpson:
 
 Esta entrega estará basada en dos partes, la primera será el desarrollo del pseudocódigo con el que conlcuímos la sección pasada, describiendo cada paso especialmente las secciones críticas del mismo, para esto se utilizará MPICH una implementación de MPI bastante conocida debido a que existe mucha documentación que se puede consultar. 
 
@@ -437,14 +418,5 @@ A priori sabemos que el resultado tórico es de 1/3 por lo que nuestro algirtmo 
 
 Como conclusión interesnte vemos que el proceso es totalmente asíncrono debido al principio de no determinismo que queríamos verificar imprimiendo la secuencia en la que cada proceso arribo al STDOUT.
 
-
-
-# Equipo
-
-Realizamos la implementación de forma distribuida utilizando Riemann, MCMC y Simpson.
-
-El avance en el trabajo escrito se puede descargar del siguiente vínculo de dropbox:
-
-[https://www.dropbox.com/sh/jxjmroy6zvtml4s/AABCbQfoFnscRR2kWVvwy_0oa?dl=0](https://www.dropbox.com/sh/jxjmroy6zvtml4s/AABCbQfoFnscRR2kWVvwy_0oa?dl=0)
 
 
