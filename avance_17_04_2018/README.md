@@ -1,12 +1,7 @@
 # Avances 17-04-2018
 
-En primer lugar incluí un contenedor de docker con CUDA para poder empezar a correr algunos ejemplos simples. Para lo anterior, hice un docker pull del siguiente repositorio: [https://hub.docker.com/r/nvidia/cuda/](https://hub.docker.com/r/nvidia/cuda/).
-
-Comencé a leer la documentación de CUDA, para entender mejor sobre kernels, threads y memoria en la siguiente guía que está muy completa: [https://www3.nd.edu/~zxu2/acms60212-40212/CUDA_C_Programming_Guide_V7.5.pdf](https://www3.nd.edu/~zxu2/acms60212-40212/CUDA_C_Programming_Guide_V7.5.pdf).
-
+Referente al método de Riemann se implementará el pseudocódigo que se mencionó en el avance pasado siguiendo los siguientes pasos:
 Con lo anterior realicé algunos ejemplos sencillos como el Hello World! con device code y la suma de dos vectores. Dichos ejemplos, `hello_dc.cu`, `suma_vector.cu` y su output están en la carpeta de este segundo avance para su consulta.
-
-Por otro lado, en cuanto a la paralelización del cálculo del AUC utilizando Riemman, hasta ahora no se ha encontrado alguna implementación en CUDA. Por lo anterior, se implementará el pseudocódigo que se mencionó en el avance pasado siguiendo los siguientes pasos:
 
 - Calcular el ancho del dominio de la función y el ancho del rectángulo.
 
