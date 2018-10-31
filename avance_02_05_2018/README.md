@@ -1,16 +1,5 @@
 # Avances 02-05-2018
 
-# Integrantes
-- Alejandro Hernández 87806
-- Federico Riveroll 105898
-- Pablo Soria 111969
-
-# Individual
-
-
-
-__- Alejandro Hernández__
-
 Realicé un programa en C que calcula el AUC de y=x^2 utilizando Riemann de forma secuencial.
 
 Los argumentos de entrada que tiene que definir el usuario son el rango inicial, el rango final y el número de segmentos para realizar la partición. 
@@ -75,7 +64,6 @@ Se obtuvo el siguiente resultado:
 
 El programa en C `riemann_secuencial.c` se encuentra en la carpeta `avance_02_05_2018` para su consulta.
 
-__- Federico Riveroll__
 
 __MCMC secuencial en C__
 
@@ -135,10 +123,6 @@ AREA: puntos_bajo_curva/n:<br>
 __Siguientes pasos__
 
 El siguiente paso es, en lugar de hacer los 100,000 puntos aleatorios en el mismo programa, dividír la tarea en 5 programas asíncronos de 20,000 puntos que simplemente regresen cada cual su resultado y compararlos. Para ésto se planea utilizar Open MPI.
-
-
-__- Pablo Soria__
-
 
 Esta entrega estará basada en dos partes, la primera será el desarrollo del pseudocódigo para el algoritmo secuencial para la regla de 1/3 de Simpson así como el desarrollo formal del algirtmo para correrlo en C.
 
@@ -226,14 +210,5 @@ Vemos que apriori el resultado teórico ya es bastante similar al aproximado por
 
 Los siguientes pasos serán: Definir y realizar el código en alguna implementacion de MPI para comparar los resultados en términos de precisión del algirtmo secuencial y el paralelo y posteriormente incorporar mediciones de tiempo en ambos algirtmos para tambien obtener una métrica de tiempo de ejecución. Finalmente se utilizará ambos algirtmos en funciones complejas que de verdad reten la capacidad de la computadora y así podamos concluis que tan bueno o malo es el alrogitmo paralelo en situaciones límite.
 
-
-
-# Equipo
-
-Realizamos la implementación de forma secuencial utilizando Riemann, MCMC y Simpson. Asimismo, iniciamos el trabajo escrito describiendo los avances realizados hasta el momento.
-
-El trabajo escrito se puede descargar del siguiente vínculo de dropbox:[https://www.dropbox.com/sh/jxjmroy6zvtml4s/AABCbQfoFnscRR2kWVvwy_0oa?dl=0](https://www.dropbox.com/sh/jxjmroy6zvtml4s/AABCbQfoFnscRR2kWVvwy_0oa?dl=0)
-
-Nuestro objetivo para el avance de la siguiente semana es ya contar con la implementación del calculo del AUC en paralelo bajo los 3 métodos.
 
 
