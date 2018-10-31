@@ -1,14 +1,5 @@
 # Avances 24-04-2018
 
-# Integrantes
-- Alejandro Hernández 87806
-- Federico Riveroll 105898
-- Pablo Soria 111969
-
-# Individual
-
-- Alejandro Hernández
-
 En virtud de que no se encontró puntualmente una implementación en CUDA para el cálculo de AUC usando Riemann y siguiendo la recomendación del profesor, opté por buscar otra extensión de C. Encontré que en esta referencia [http://www.shodor.org/media/content/petascale/materials/UPModules/AreaUnderCurve/AUC_Module_Document_pdf.pdf](http://www.shodor.org/media/content/petascale/materials/UPModules/AreaUnderCurve/AUC_Module_Document_pdf.pdf) también se incluye la implementación en MPI y se aprecia bien documentada. Asimismo, dicho articulo explica el proceso de paralelización como sigue:
 
 La siguiente grafica nos permite tener una representación visual clara del problema a resolver:
@@ -69,10 +60,6 @@ our_areas[my_current_rectangle_id]
 ```
 
 
-
-
-- Federico Riveroll
-
 __Plan de ejecución de Integración MCMC distribuída__
 
 __¿Cómo funciona el algoritmo?__
@@ -116,8 +103,6 @@ __¿Cómo se planea paralelizar?__
 Con la librería de OpenMPI para C.
 
 Se planea hacer un programa "molde" que realice n/p simulaciones (sindo p el número de particiones), que envíe desde consola con <b>mpirun -np p programa</b> 'p' instancias del programa que trabajen de manera asíncrona, y que devuelvan cada quien su promedio calculado, cuando los promedios sean regresados que estos mismos se promedien y la distribución de los mismos será <b>Normal con media en el área bajo la curva</b>, después la idea es graficar esos promedios y obtener tanto el AUC como una aplicación (fortuita) del teorema del límite central.
-
-- Pablo Soria
 
 
 __Paralelizando__
