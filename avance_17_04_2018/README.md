@@ -121,18 +121,3 @@ double Simpsons3_8(int m, double a, double b,
 Estos algoritmos reciben los valores de la cantidad de intervalos ( recordemos que debe ser par), el intervalo de integración [a,b] y la función f(x) y devuelve el resultado de la suma. Esta función nos servirá más adelante para paralelizar ya que desde este punto de vista, cada nodo recibirá una sub-división del rango entre [a,b] y dividirá este sub intervalo en m partes. 
 
 **Nota:** Eventualmente será necesario poner una regla al momento de elegir el número de subdivisiones que evite los problemas de poner una m que no sea par en el caso de la regla de 1/3 y que m no sea múltiplo de 3 en el caso de la regla de 3/8.
-
-
-
-# Equipo
-
-Sostuvimos una reunión entre todos los miembros del equipo para comentar los avances que se habían logrado. En resumen, ya todos encontramos ejemplos de implementaciones tanto en secuencial como en paralelo y realizamos algunas implementaciones simples.
-
-Coincidimos que el siguiente paso ahora es comenzar a paralelizar los problemas en CUDA e irnos retroalimentando sobre la problemática detectada para hacer más dinámica la implementación.
-
-Asimismo, consideramos que vamos a tener que ahondar más en la teoría relativa a CUDA para poder entender y desarrollar la paralelización, pues todavía persisten algunas dudas concernientes a la plataforma.
-
-Nos percatamos que tenemos que acelerar el paso en la implementación para poder cumplir con el objetivo que habíamos establecido en nuestro cronograma, en el cual señalábamos que para el 20-04-2018 ya deberíamos contar con una primera propuesta de implementación.
-
-Finalmente, esperamos que para el tercer avance ya contemos con implementaciones para el cálculo de AUC de forma puntual.
-
