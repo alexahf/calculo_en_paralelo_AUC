@@ -1,16 +1,5 @@
 # Avances 17-04-2018
 
-# Integrantes
-- Alejandro Hernández 87806
-- Federico Riveroll 105898
-- Pablo Soria 111969
-
-# Individual
-
-
-
-__- Alejandro Hernández__
-
 En primer lugar incluí un contenedor de docker con CUDA para poder empezar a correr algunos ejemplos simples. Para lo anterior, hice un docker pull del siguiente repositorio: [https://hub.docker.com/r/nvidia/cuda/](https://hub.docker.com/r/nvidia/cuda/).
 
 Comencé a leer la documentación de CUDA, para entender mejor sobre kernels, threads y memoria en la siguiente guía que está muy completa: [https://www3.nd.edu/~zxu2/acms60212-40212/CUDA_C_Programming_Guide_V7.5.pdf](https://www3.nd.edu/~zxu2/acms60212-40212/CUDA_C_Programming_Guide_V7.5.pdf).
@@ -36,8 +25,6 @@ Por otro lado, en cuanto a la paralelización del cálculo del AUC utilizando Ri
 - Calcular la suma total global.
 
 
-__- Federico Riveroll__
-
 [http://users.stat.umn.edu/~galin/UST.pdf](http://users.stat.umn.edu/~galin/UST.pdf)
 
 Estudiando la integración con el método de Markov Chain Monte Carlo, sacamos la siguiente simplificación para entender el concepto de esta técnica que es simple y efectiva;
@@ -55,9 +42,6 @@ Esta técnica aplica no solo para cualquier función lineal o polinomial, sino q
 Otra gran ventaja de usar esta técnica es que cada punto simulado es independiente de los demás, por lo tanto se puede paralelizar y al final promediar y es completamente equivalente el resultado.
 
 El plan será enviar diversos hilos que hagan estas simulaciones (todas con el mismo número de iteraciones) y regresen el resultado. Cuando todos los resultados sean devueltos, se promedian y ese número será nuestro resultado.
-
-
-__- Pablo Soria__
 
 Dentro de lo que se conoce como integración numérica, la regla del trapecio busca calcular el área bajo una curva por realizando una interpolación entre dos puntos por medio de un polinomio de grado 1, es decir una recta, gráficamente:
 
